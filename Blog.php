@@ -1,6 +1,4 @@
 <?php
-interface Website{
-}
 class Blog implements Website {
     public $Blogposts;
     public function __construct(){
@@ -13,3 +11,4 @@ class Blog implements Website {
         array_push($this->Blogposts, $Blogpost);
     }
 }
+?>

@@ -9,13 +9,13 @@ function __autoload($class_name) {
 
 try {
     $a = new Blog();
-    $b = new BlogPost();
+    $b = new BlogPost(Title, Category);
 } catch (Exception $e) {
     echo $e->getMessage(), "\n";
 }
 
 
-class Mypage{
+class MyPage{
     public $title;
     public $data;
     public $blog;
@@ -42,7 +42,7 @@ class Mypage{
         $this->data['blog'] = $blogItems;
     }
 }
-$page = new Mypage();
+$page = new MyPage();
 $page->title = "Blog Sample";
 ?>
 <!DOCTYPE html>
@@ -53,7 +53,6 @@ $page->title = "Blog Sample";
 <body>
 <div class="container">
     <div class="row">
-        <header class="navbar navbar-nav"><ul><li><a href="#">Home</a></li></ul></header>
         <h1> Blogs </h1>
     </div>
     <div class="row">
