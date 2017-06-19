@@ -1,4 +1,6 @@
 <?php
+use Acme\Blog;
+use Acme\BlogPost;
 function __autoload($class_name) {
     if(file_exists($class_name . '.php')) {
         require_once($class_name . '.php');
@@ -8,8 +10,13 @@ function __autoload($class_name) {
 }
 
 try {
-    $a = new Blog();
-    $b = new BlogPost(Title, Category);
+    $blog = new Blog();
+    $blog->saveComment();
+    $blog->saveBlog();
+    $post = new BlogPost(Title, Category);
+    $post->saveBlogPost();
+    $post->saveComment();
+
 } catch (Exception $e) {
     echo $e->getMessage(), "\n";
 }

@@ -1,5 +1,9 @@
-<?php
-class BlogPost {
+<?php namespace Acme;
+
+class BlogPost
+{
+    use CommentTrait;
+
     private $title;
     private $category;
     function __construct($title, $category){
@@ -15,10 +19,22 @@ class BlogPost {
     function getCategory(){
         return $this->category;
     }
-    function setCategory($price){
+    function setCategory($category){
         $this->category = $category;
     }
     function __toString(){
-        return 'Title: '.$this->getTitle().'<br/> Category: '.$this->getCategory();
+    return 'Title: '.$this->getTitle().'<br/> Category: '.$this->getCategory();
+}
+
+    /**
+     * @return mixed
+     */
+    public function getBlogposts()
+    {
+        // TODO: Implement getBlogposts() method.
     }
 }
+
+class BlogContent extends \BlogPost{
+}
+(new \BlogContent)->getCategory();
