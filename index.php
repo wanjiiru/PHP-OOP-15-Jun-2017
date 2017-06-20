@@ -2,20 +2,20 @@
 use Acme\Blog;
 use Acme\BlogPost;
 function __autoload($class_name) {
-    if(file_exists($class_name . '.php')) {
-        require_once($class_name . '.php');
+    $filename = __DIR__ . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $class_name) . '.php';
+    if(file_exists($filename)) {
+        require_once($filename);
     } else {
-        throw new Exception("Unable to load $class_name.");
+        throw new Exception("Unable to load $filename.");
     }
 }
 
 try {
     $blog = new Blog();
-    $blog->saveComment();
+    $blog->saveComment('Add comment data here');
     $blog->saveBlog();
-    $post = new BlogPost(Title, Category);
-    $post->saveBlogPost();
-    $post->saveComment();
+    $post = new BlogPost('Add title here', 'Add category here');
+    $post->saveComment('Comment Data');
 
 } catch (Exception $e) {
     echo $e->getMessage(), "\n";
@@ -28,10 +28,10 @@ class MyPage{
     public $blog;
     function __construct(){
         $article = new Blogpost('Music is overrated', 'Entertainment');
-        $learn = new Blogpost('Make Better Software better', 'Technology');
+        $learn = new Blogpost('Make Be  tter Software better', 'Technology');
         $news = new Blogpost('Is your company facing an innovation gap?', 'Innovation');
         $updates = new Blogpost('​How to use Linux built-in USB attack protection', 'Security');
-        $this->blog = new blog();
+        $this->blog = new blog('');
         $this->blog->addBlogPost($article);
         $this->blog->addBlogPost($news);
         $this->blog->addBlogPost($learn);
@@ -47,6 +47,14 @@ class MyPage{
             $blogItems .= '<div class="col-md-4"> Blog: ' . $blogPost->getTitle() . '<br> Category: ' . $blogPost->getCategory() . '</div>';
         }
         $this->data['blog'] = $blogItems;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getData ()
+    {
+        return $this->data;
     }
 }
 $page = new MyPage();

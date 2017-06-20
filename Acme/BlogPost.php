@@ -34,7 +34,3 @@ class BlogPost
         // TODO: Implement getBlogposts() method.
     }
 }
-
-class BlogContent extends \BlogPost{
-}
-(new \BlogContent)->getCategory();

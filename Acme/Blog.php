@@ -1,6 +1,7 @@
-<?php
-namespace Acme;
-class Blog implements\Repository {
+<?php namespace Acme;
+use Acme\Repository;
+
+class Blog implements Repository {
     use CommentTrait;
     public $Blogposts;
     public function __construct(){
@@ -17,9 +18,14 @@ class Blog implements\Repository {
         array_push($this->Blogposts, $Blogpost);
     }
 
-    public function getTitle()
+    public function saveBlog ()
     {
-        // TODO: Implement getTitle() method.
+        // TODO: Implement saveBlog() method.
+    }
+
+    public function saveBlogPost ()
+    {
+        // TODO: Implement saveBlogPost() method.
     }
 }
 ?>
